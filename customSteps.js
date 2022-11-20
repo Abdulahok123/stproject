@@ -40,5 +40,7 @@ Given('I visit google homepage',{timeout: 60 * 1000}, async ()=> {
             await driver.findElement(By.css('.RSFNavTab-tab-69')).click()
           });
           Then('I am redirected to the page with that subcategory of that category', async ()=> {
-            await driver.get('http://localhost:3000/s/1');
+            await driver.sleep(10000)
+            let text = await driver.findElement(By.css('.MuiTypography-gutterBottom')).getText()
+            console.log(text);
           });
