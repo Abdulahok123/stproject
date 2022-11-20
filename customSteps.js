@@ -44,3 +44,24 @@ Given('I visit google homepage',{timeout: 60 * 1000}, async ()=> {
             let text = await driver.findElement(By.css('.MuiTypography-gutterBottom')).getText()
             console.log(text);
           });
+Given('I am on the cart page', async ()=> {
+            await driver.get('http://localhost:3000/s/1');
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.makeStyles-link-103')).click()
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.makeStyles-noShadow-207')).click()
+            await driver.sleep(5000)
+            await driver.get('http://localhost:3000/cart');
+            await driver.sleep(5000)
+
+          });
+          When('I increase the product quantity using plus button', async ()=> {
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.MuiIconButton-sizeSmall')).click()
+            
+          });
+          let quantity=1
+          Then('My product quantity increases', async ()=> {
+            await driver.sleep(10000)
+            quantity.equal(await driver.findElement(By.css('.RSFQuantitySelector-input-116')))
+          });
