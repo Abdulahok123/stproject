@@ -50,7 +50,7 @@ Given('I am on home page',{timeout: 60 * 1000}, async ()=> {
                Given('I add a product to cart', async()=>{
             await driver.get('http://localhost:3000/s/1');
             await driver.sleep(5000)
-            await driver.findElement(By.css('.makeStyles-link-103')).click()
+            await driver.findElement(By.id('item-0')).click()
             await driver.sleep(5000)
             await driver.findElement(By.css('.makeStyles-noShadow-207')).click()
             await driver.sleep(5000)
