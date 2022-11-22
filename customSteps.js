@@ -20,19 +20,22 @@ When('I add {int} into {int}', function (number1, number2) {
        expect(sum).equal(result);
         });
 
-Given('I visit google homepage',{timeout: 60 * 1000}, async ()=> {
-            await driver.get('http://google.com');
+Given('I am on home page',{timeout: 60 * 1000}, async ()=> {
+            await driver.get('http://localhost:3000');
           });
-        When('I search for Techverito',{timeout: 60 * 1000}, async ()=> {
-            await driver.findElement(By.name('q')).sendKeys('Techverito'+'\n');
+        When('I search for Black',{timeout: 60 * 1000}, async ()=> {
+            await driver.findElement(By.name('q')).sendKeys('Black'+'\n');
           });
         
       
           Then('I should see the results',{timeout: 60*1000}, async ()=> {
-            let text = await driver.findElement(By.id('search')).getText()
-            console.log(text);
- 
-           });
+            await driver.sleep(20000);
+            let text = await driver.findElement(By.className('MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12')).getText().then(null, function (err) {
+              if (err.name === "NoSuchElementError")
+                  assert.fail('could not search')
+                  else
+                  console.log(text);
+          });
            Given('I am on Home Page', async()=> {
             await driver.get('http://localhost:3000');
           });
