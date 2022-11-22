@@ -60,11 +60,19 @@ Given('I am on the cart page', async ()=> {
           });
           When('I increase the product quantity using plus button', async ()=> {
             await driver.sleep(5000)
-            await driver.findElement(By.css('.MuiIconButton-sizeSmall')).click()
+            quantitybeforeIncrease=await driver.findElement(By.name('quantity')).getAttribute('value');
+            quantitybeforeIncrease=parseInt(quantitybeforeIncrease);
+            console.log(quantitybeforeIncrease);
+            await driver.findElement(By.css('[aria-label="subtract one quantity"]')).click()
             
           });
-          let quantity=1
+          let quantityafterIncrease=0
           Then('My product quantity increases', async ()=> {
-            await driver.sleep(10000)
-            quantity.equal(await driver.findElement(By.css('.RSFQuantitySelector-input-116')))
+            await driver.sleep(2000);
+            quantityafterIncrease=await driver.findElement(By.name('quantity')).getAttribute('value');
+            quantityafterIncrease=parseInt(quantityafterIncrease);
+            if(quantityafterIncrease==(quantitybeforeIncrease+1))
+            console.log(quantityafterIncrease);
+            else{
+              assert.fail('functionalities malfunctioning');}
           });
