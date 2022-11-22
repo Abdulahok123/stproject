@@ -99,3 +99,16 @@ Given('I am on specific product page', async ()=> {
             let text = await driver.findElement(By.css('.MuiGrid-item')).getText()
             console.log(text);
           });
+When('I press the remove option', async ()=> {
+            await driver.sleep(10000)
+            let text = await driver.findElement(By.css('.MuiGrid-item')).getText()
+            console.log('cart before removing item\n'+text);
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.makeStyles-remove-118')).click()
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.MuiButton-text')).click()});
+            Then('My product is removed from the cart', async ()=> {
+              await driver.sleep(10000)
+            let text = await driver.findElement(By.css('.MuiGrid-item')).getText()
+            console.log('cart after removing item\n'+text);
+          });
