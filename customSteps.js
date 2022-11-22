@@ -60,6 +60,7 @@ Given('I am on home page',{timeout: 60 * 1000}, async ()=> {
           Given('I am on the cart page', async ()=> {
             await driver.get('http://localhost:3000/cart');
             await driver.sleep(5000)});
+              let quantitybeforeIncrease=0;
           When('I increase the product quantity using plus button', async ()=> {
             await driver.sleep(5000)
             quantitybeforeIncrease=await driver.findElement(By.name('quantity')).getAttribute('value');
