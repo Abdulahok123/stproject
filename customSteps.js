@@ -47,17 +47,19 @@ Given('I am on home page',{timeout: 60 * 1000}, async ()=> {
             let text = await driver.findElement(By.css('.MuiTypography-gutterBottom')).getText()
             console.log(text);
           });
-Given('I am on the cart page and i have added a product to cart', async ()=> {
+               Given('I add a product to cart', async()=>{
             await driver.get('http://localhost:3000/s/1');
             await driver.sleep(5000)
             await driver.findElement(By.css('.makeStyles-link-103')).click()
             await driver.sleep(5000)
             await driver.findElement(By.css('.makeStyles-noShadow-207')).click()
             await driver.sleep(5000)
-            await driver.get('http://localhost:3000/cart');
-            await driver.sleep(5000)
+          })
 
-          });
+
+          Given('I am on the cart page', async ()=> {
+            await driver.get('http://localhost:3000/cart');
+            await driver.sleep(5000)});
           When('I increase the product quantity using plus button', async ()=> {
             await driver.sleep(5000)
             quantitybeforeIncrease=await driver.findElement(By.name('quantity')).getAttribute('value');
