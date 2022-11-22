@@ -76,3 +76,23 @@ Given('I am on the cart page and i have added a product to cart', async ()=> {
             else{
               assert.fail('functionalities malfunctioning');}
           });
+Given('I am on specific product page', async ()=> {
+            await driver.get('http://localhost:3000/s/1');
+            await driver.sleep(5000)
+          });
+          When('I select a specific product', async ()=> {
+            await driver.findElement(By.id('item-1')).click()
+            await driver.sleep(5000)
+            await driver.findElement(By.css('.makeStyles-noShadow-207')).click()
+            await driver.sleep(5000)
+          });
+          When('I go to the cart page', async ()=> {
+            await driver.get('http://localhost:3000/cart');
+            await driver.sleep(5000)
+          });
+          Then('That specific product are shown on the cart page', async ()=> {     
+            
+            await driver.sleep(10000)
+            let text = await driver.findElement(By.css('.MuiGrid-item')).getText()
+            console.log(text);
+          });
