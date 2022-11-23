@@ -1,5 +1,5 @@
-Feature: Specific Sizes
-Scenario: Specific Sizes on Products Page
+Feature: Old/New Checkbox
+Scenario: Old/New Checkbox Selection on Products Page
 	Given I am at products page
-	When I select a specific size
-	Then It shall show me products of that size only
+	When I check old checkbox
+	Then It shall show me old products only
