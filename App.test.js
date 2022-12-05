@@ -1,5 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
+import PostInput from "./components/PostInput/postinput";
+import SkillItem from "./components/UserProfile/Skill/SkillItem/skillitem";
+import EducationItem from "./components/UserProfile/Education/EducationItem/educationitem";
 import { BrowserRouter as Router } from "react-router-dom";
 test("Sign Up Button Works", () => {
   render(
@@ -13,7 +16,7 @@ test("Sign Up Button Works", () => {
   expect(linkElement3).toBeInTheDocument();
 });
 
-test("Sign Up Button Works", () => {
+test("Sign In Button Works", () => {
   render(
     <Router>
       <App />
@@ -55,4 +58,40 @@ test("Sign Up Elements Visible", () => {
   expect(linkElement10).toBeVisible();
   const linkElement11 = screen.getByTitle("role");
   expect(linkElement11).toBeVisible();
+});
+
+test("Post has a Make a Post Heading", () => {
+  render(
+    <Router>
+      <PostInput />
+    </Router>
+  );
+  const linkElement3 = screen.getByRole("heading", { name: "Make a Post" });
+  expect(linkElement3).toBeVisible();
+});
+
+test("Skill Shows proper skill", () => {
+  render(
+    <Router>
+      <SkillItem sName="My Skill" sType="Coding" />
+    </Router>
+  );
+  const linkElement3 = screen.getByRole("heading", { name: "My Skill" });
+  expect(linkElement3).toBeVisible();
+});
+
+test("Education Shows Properly", () => {
+  render(
+    <Router>
+      <EducationItem
+        startdate="10/5/10"
+        enddate="10/5/12"
+        institute="LGS"
+        degree="Alevel"
+        details="Hi"
+      />
+    </Router>
+  );
+  const linkElement3 = screen.getByRole("heading", { name: "LGS" });
+  expect(linkElement3).toBeVisible();
 });
