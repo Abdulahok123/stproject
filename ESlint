@@ -1,0 +1,5 @@
+eslint is a linter tool provided by MS used for static aalysis of your code
+For installing Eslint you have to install ESlint extension for VSCode
+Run command npm install eslint --save-dev
+Run npm install eslint-plugin-react@latest --save-dev
+run eslint --init
